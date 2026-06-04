@@ -2,7 +2,8 @@ apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: nginx-replicaset
-  labels:
+  annotations:
+    config.kubernetes.io/local-config: "true"
     app: nginx
 spec:
   replicas: 5
