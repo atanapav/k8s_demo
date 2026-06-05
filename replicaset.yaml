@@ -1,22 +1,21 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: nginx-replicaset
-  annotations:
-    config.kubernetes.io/local-config: "true"
-    app: nginx
+  name: redis-replicaset
+  labels:
+    app: redis
 spec:
-  replicas: 5
+  replicas: 8
   selector:
     matchLabels:
-      app: nginx
+      app: redis
   template:
     metadata:
       labels:
-        app: nginx
+        app: redis
     spec:
       containers:
-      - name: nginx
-        image: nginx:latest
+      - name: redis
+        image: redis:7
         ports:
-        - containerPort: 80
+        - containerPort: 6379
